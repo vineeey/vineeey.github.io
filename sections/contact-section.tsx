@@ -10,11 +10,20 @@ export function ContactSection() {
       <SectionHeading title="Contact" subtitle="Let us build meaningful AI-powered products together." />
       <div className="grid gap-6 lg:grid-cols-2" data-reveal>
         <GlassCard>
-          <form className="space-y-4">
-            <input placeholder="Your Name" className="input-glow" />
-            <input placeholder="Email" className="input-glow" type="email" />
-            <textarea placeholder="Tell me about your project" className="input-glow min-h-32" />
-            <button className="w-full rounded-xl border border-cyan-300/50 bg-cyan-300/20 px-4 py-3 font-semibold text-cyan-100 shadow-[0_0_20px_-6px_rgba(34,211,238,1)] transition hover:bg-cyan-300/35" type="button">
+          <form
+            className="space-y-4"
+            action={`mailto:${profile.email}`}
+            method="post"
+            encType="text/plain"
+          >
+            <input name="name" placeholder="Your Name" className="input-glow" />
+            <input name="email" placeholder="Email" className="input-glow" type="email" />
+            <textarea
+              name="message"
+              placeholder="Tell me about your project"
+              className="input-glow min-h-32"
+            />
+            <button className="w-full rounded-xl border border-cyan-300/50 bg-cyan-300/20 px-4 py-3 font-semibold text-cyan-100 shadow-[0_0_20px_-6px_rgba(34,211,238,1)] transition hover:bg-cyan-300/35" type="submit">
               Send Message
             </button>
           </form>

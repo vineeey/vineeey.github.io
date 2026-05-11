@@ -4,23 +4,23 @@ import { Float, MeshDistortMaterial, Sphere } from "@react-three/drei";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { motion } from "framer-motion";
 import { BriefcaseBusiness, Code2, Mail, MapPin } from "lucide-react";
-import { useMemo, useRef } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import type * as THREE from "three";
 
 import { GlowButton } from "@/components/ui/glow-button";
 import { profile } from "@/lib/data";
 
 function OrbitalMesh() {
-  const groupRef = useRef<THREE.Group>(null);
+  const orbitalGroupRef = useRef<THREE.Group>(null);
 
   useFrame((state) => {
-    if (!groupRef.current) return;
-    groupRef.current.rotation.y = state.clock.elapsedTime * 0.2;
-    groupRef.current.rotation.x = state.clock.elapsedTime * 0.08;
+    if (!orbitalGroupRef.current) return;
+    orbitalGroupRef.current.rotation.y = state.clock.elapsedTime * 0.2;
+    orbitalGroupRef.current.rotation.x = state.clock.elapsedTime * 0.08;
   });
 
   return (
-    <group ref={groupRef}>
+    <group ref={orbitalGroupRef}>
       <Float speed={2} rotationIntensity={1} floatIntensity={1.4}>
         <Sphere args={[1.2, 64, 64]} position={[-1.8, 0.4, -1]}>
           <MeshDistortMaterial color="#22d3ee" emissive="#0ea5e9" distort={0.45} speed={1.5} roughness={0.1} />
@@ -44,16 +44,26 @@ function TypewriterSubtitle() {
     () => ["AI Systems Builder", "Full Stack Developer", "Data Science Engineer"],
     [],
   );
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = window.setInterval(() => {
+      setIndex((prev) => (prev + 1) % words.length);
+    }, 2200);
+    return () => window.clearInterval(timer);
+  }, [words]);
 
   return (
     <div className="relative overflow-hidden rounded-full border border-cyan-300/30 bg-cyan-300/10 px-4 py-2 text-sm text-cyan-100">
       <motion.span
-        className="inline-block"
-        initial={{ y: 18, opacity: 0 }}
-        animate={{ y: [18, 0, 0, -18], opacity: [0, 1, 1, 0] }}
-        transition={{ duration: 4, repeat: Infinity, repeatDelay: 0.2 }}
+        key={words[index]}
+        className="inline-block min-w-52"
+        initial={{ y: 12, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        exit={{ y: -12, opacity: 0 }}
+        transition={{ duration: 0.35 }}
       >
-        {words[0]}
+        {words[index]}
       </motion.span>
     </div>
   );
