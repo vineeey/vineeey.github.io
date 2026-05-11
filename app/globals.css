@@ -1,0 +1,100 @@
+@import "tailwindcss";
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background:
+    radial-gradient(circle at 10% 10%, rgba(34, 211, 238, 0.2), transparent 30%),
+    radial-gradient(circle at 80% 0%, rgba(168, 85, 247, 0.18), transparent 30%),
+    #05080f;
+  font-family: Inter, SF Pro Display, system-ui, sans-serif;
+}
+
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.3rem;
+  height: 2.3rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(34, 211, 238, 0.38);
+  background: rgba(34, 211, 238, 0.12);
+  color: rgb(165 243 252);
+  transition: all 200ms ease;
+}
+
+.social-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 22px -5px rgba(34, 211, 238, 0.95);
+}
+
+.input-glow {
+  width: 100%;
+  border-radius: 0.9rem;
+  border: 1px solid rgba(34, 211, 238, 0.4);
+  background: rgba(8, 20, 35, 0.65);
+  padding: 0.75rem 0.9rem;
+  color: rgb(224 242 254);
+  outline: none;
+}
+
+.input-glow:focus {
+  box-shadow: 0 0 0 2px rgba(34, 211, 238, 0.32);
+}
+
+.contact-link {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  color: rgba(224, 242, 254, 0.85);
+}
+
+.cube {
+  position: relative;
+  width: 5rem;
+  height: 5rem;
+  transform-style: preserve-3d;
+}
+
+.cube div {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(34, 211, 238, 0.4);
+  border-radius: 0.7rem;
+  background: rgba(9, 40, 56, 0.3);
+  color: rgba(236, 254, 255, 0.92);
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+}
+
+.cube div:nth-child(1) {
+  transform: rotateY(0deg) translateZ(2.5rem);
+}
+
+.cube div:nth-child(2) {
+  transform: rotateY(90deg) translateZ(2.5rem);
+}
+
+.cube div:nth-child(3) {
+  transform: rotateY(180deg) translateZ(2.5rem);
+}
+
+.cube div:nth-child(4) {
+  transform: rotateY(-90deg) translateZ(2.5rem);
+}
+
+.cube div:nth-child(5) {
+  transform: rotateX(90deg) translateZ(2.5rem);
+}
+
+.cube div:nth-child(6) {
+  transform: rotateX(-90deg) translateZ(2.5rem);
+}
