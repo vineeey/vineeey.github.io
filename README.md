@@ -2,6 +2,10 @@
 
 Premium cinematic portfolio built with Next.js App Router, TypeScript, Tailwind CSS, Framer Motion, GSAP, React Three Fiber, and Lenis.
 
+## Live Portfolio
+
+View it here: https://vineeey.github.io/
+
 ## Scripts
 
 ```bash
